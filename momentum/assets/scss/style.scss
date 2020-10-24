@@ -1,5 +1,52 @@
 @import "fonts.scss";
 @import "../css/reset";
-.main-page {
-	color: red;
+
+body {
+	font-family: 'Quicksand', sans-serif;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	height: 100vh;
+	// font-size: 100px;
+// 	color: #616161;
+// background: #bababa;
+// text-shadow: #e0e0e0 1px 1px 0;
+// color: #d9d9d9;
+// background: #e8e8e8;
+// text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+background: no-repeat 50%/cover;
+// color: #333333;
+// text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0,0,0,0.15);
+color: #fff;
+text-shadow: 4px 3px 0 #7A7A7A;
+
+}
+.time {
+	font-size: 12rem;
+	width: 3.5em;
+	text-align: left;
+	line-height: 1.5;
+}
+.time, .date {
+	cursor: default;
+}
+.date {
+	line-height: 3;
+	font-size: 4rem;
+}
+.greeting, .focus_title, .focus, .name {
+	line-height: 2;
+	font-size: 3rem;
+}
+.name {
+	display: inline-block;
+	min-width: 5px;
+}
+
+@media (max-width: 768px) {
+	#time {
+		font-size: 6rem;
+	}
 }

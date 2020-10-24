@@ -58,5 +58,52 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400; }
 
 /*--------------------*/
-.main-page {
-  color: red; }
+body {
+  font-family: 'Quicksand', sans-serif;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  height: 100vh;
+  background: no-repeat 50%/cover;
+  color: #fff;
+  text-shadow: 4px 3px 0 #7A7A7A; }
+
+.time {
+  font-size: 12rem;
+  width: 3.5em;
+  text-align: left;
+  line-height: 1.5; }
+
+.time, .date {
+  cursor: default; }
+
+.date {
+  line-height: 3;
+  font-size: 4rem; }
+
+.greeting, .focus_title, .focus, .name {
+  line-height: 2;
+  font-size: 3rem; }
+
+.name {
+  display: inline-block;
+  min-width: 5px; }
+
+@media (max-width: 768px) {
+  #time {
+    font-size: 6rem; } }

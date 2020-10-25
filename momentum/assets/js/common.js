@@ -126,18 +126,18 @@ function getCity () {
 
 function setCity(e) {
 	if(e.type === `keypress`) {
-		if((e.which == 13 || e.keyCode == 13) && city.textContent !== "") {
+		if((e.which == 13 || e.keyCode == 13) && city.textContent.trim() !== "") {
 			localStorage.setItem('city', e.target.innerText[0].toUpperCase() + e.target.innerText.slice(1));
 			getWeather()
 			city.blur();
 		} else if ((e.which == 13 || e.keyCode == 13)
-					 && city.textContent === ""
+					 && city.textContent.trim() === ""
 					 && localStorage.getItem('city') === null) {
 			city.textContent = "[Enter Your City]";
 			getWeather()
 			city.blur();
 		} else if ((e.which == 13 || e.keyCode == 13)
-					 && city.textContent === ""
+					 && city.textContent.trim() === ""
 					 && localStorage.getItem('city') !== null) {
 			city.textContent = localStorage.getItem('city');
 			getWeather()
@@ -151,16 +151,16 @@ function setCity(e) {
 
 function setName(e) {
 	if(e.type === `keypress`) {
-		if((e.which == 13 || e.keyCode == 13) && name.textContent !== "") {
+		if((e.which == 13 || e.keyCode == 13) && name.textContent.trim() !== "") {
 			localStorage.setItem('name', e.target.innerText);
 			name.blur();
 		} else if ((e.which == 13 || e.keyCode == 13)
-					 && name.textContent === ""
+					 && name.textContent.trim() === ""
 					 && localStorage.getItem('name') === null) {
 			name.textContent = "[Enter Name]";
 			name.blur();
 		} else if ((e.which == 13 || e.keyCode == 13)
-					 && name.textContent === ""
+					 && name.textContent.trim() === ""
 					 && localStorage.getItem('name') !== null) {
 			name.textContent = localStorage.getItem('name');
 			name.blur();
@@ -173,16 +173,16 @@ function setName(e) {
 
 function setFocus(e) {
 	if(e.type === `keypress`) {
-		if((e.which == 13 || e.keyCode == 13) && focus.textContent !== "") {
+		if((e.which == 13 || e.keyCode == 13) && focus.textContent.trim() !== "") {
 			localStorage.setItem('focus', e.target.innerText);
 			focus.blur();
 		} else if ((e.which == 13 || e.keyCode == 13)
-					 && focus.textContent === ""
+					 && focus.textContent.trim() === ""
 					 && localStorage.getItem('focus') === null) {
 			focus.textContent = "[Enter Focus]";
 			focus.blur();
 		} else if ((e.which == 13 || e.keyCode == 13)
-					 && focus.textContent === ""
+					 && focus.textContent.trim() === ""
 					 && localStorage.getItem('focus') !== null) {
 			focus.textContent = localStorage.getItem('focus');
 			focus.blur();

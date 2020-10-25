@@ -11,17 +11,17 @@ body {
 	height: 100vh;
 	background: no-repeat 50% 50%/cover;
 	color: #fff;
-	transition: background-image 1.5s linear;
+	transition: background-image 1s linear;
 
 }
 .time {
 	font-size: 16rem;
 	width: 3.5em;
 	text-align: left;
-	line-height: 1.5;
+	line-height: 1;
 	text-shadow: 4px 3px 0 #000;
 }
-.time, .date, .greeting, .focus_title, {
+.time, .date, .greeting, .focus_title, .quote_content, .quote_author {
 	cursor: default;
 	text-shadow: 2px 2px 4px #000;
 	font-weight: 700;
@@ -31,7 +31,23 @@ body {
 	line-height: 3;
 	font-size: 6rem;
 }
-.greeting, .focus_title, .focus, .name {
+.quote {
+	max-width: 70vw;
+	font-size: 5rem;
+	text-align-last: left;
+	font-family: 'Dancing Script', cursive;
+	//font-family: 'Sacramento', cursive;
+}
+.quote_author {
+	line-height: 2.5;
+	font-size: 5rem;
+	text-align: left;
+	font-style: italic;
+	color: #cacaca;
+	font-style: normal;
+	font-family: 'Sacramento', normal;
+}
+.greeting, .focus_title, .focus, .name,  {
 	line-height: 2;
 	font-size: 4rem;
 }
@@ -64,7 +80,7 @@ body {
 	color: #fff;
 	text-shadow: 4px 3px 0 #000;
 	&:hover {
-		animation: arrowL 1.5s linear infinite;
+		animation: arrowL 0.75s linear infinite;
 	}
 	@keyframes arrowL {
 		0% {transform: translateX(0);}
@@ -81,8 +97,51 @@ body {
 	left: auto;
 	right: 2vh;
 	&:hover {
-		animation: arrowR 1.5s linear infinite;}
+		animation: arrowR 0.75s linear infinite;}
 	
+}
+.weather {
+	position: fixed;
+	background: rgba(91, 91, 91, 0.7);
+	border-radius: 3%;
+	box-shadow: 10px 10px 10px 25px rgba(91, 91, 91, 0.7);
+	font-family: 'Quicksand', sans-serif;
+	font-size: 30px;
+	left: 6vw;
+	top: 1vw;
+	width: 20%;
+	line-height: 1.5;
+	div {
+		margin-bottom: 20px;
+		text-shadow: 1px 1px 3px #000;
+		padding-left: 100px;
+		text-align: left;
+		cursor: default;
+		&:first-child {
+			cursor: auto;
+		}
+	}
+	&__city {
+		background: url("assets/images/maps_icon.png") no-repeat 0% 50%/contain;
+		height: 1.5em;
+		
+	}
+	&__temperature {
+		font-size: 2em;
+		background: url("assets/images/temperature_icon2.png") no-repeat 0% 50%/contain;
+	}
+	&__wind {
+		background: url("assets/images/wind_icon1.png") no-repeat 0% 50%/contain;
+	}
+	&__visibility {
+		background: url("assets/images/visibility_icon1.png") no-repeat 0% 50%/contain;
+	}
+	&__humidity {
+		background: url("assets/images/humidity_color.png") no-repeat 0% 50%/contain;
+	}
+	&__description {
+		background: no-repeat 0% 50%/contain;
+	}
 }
 
 @media (max-width: 768px) {

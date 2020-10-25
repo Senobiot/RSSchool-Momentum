@@ -157,9 +157,9 @@ body {
 .weather {
 	padding-top: 10px;
 	position: fixed;
-	background: rgba(91, 91, 91, 0.7);
+	background: rgba(228, 228, 228, 0.6);
 	border-radius: 3%;
-	box-shadow: 10px 10px 10px 25px rgba(91, 91, 91, 0.7);
+	box-shadow: 10px 10px 10px 25px rgba(228, 228, 228, 0.6);
 	font-family: 'Quicksand', sans-serif;
 	font-size: 20px;
 	left: 10vw;
@@ -202,7 +202,6 @@ body {
 	}
 	&__description {
 		background: no-repeat 0% 50%/contain;
-		background-color: #fff;
 	}
 }
 
@@ -274,13 +273,14 @@ body {
 	.weather {
 		position: static;
 		padding-bottom: 50px;
-		background: rgba(91, 91, 91, 1);
+		background: rgba(228, 228, 228, 1);
 		width: 100vw;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-around;
 		padding: 0 10px;
 		height: auto;
+		color: #000;
 		div {
 			width: 50%;
 			font-size: 1.5em;
@@ -338,9 +338,12 @@ body {
 	.weather div {
 		width: 100%;
 		&:nth-child(3n + 4) {
-    text-align: left;
-    padding: 0 0 0 50px;
-    background-position: 0%;
+			text-align: left;
+			padding: 0 0 0 50px;
+			background-position: 0%;
+		}
+		&:nth-child(2) {
+			font-size: 1.2em;
+		}
 	}
-}
 }

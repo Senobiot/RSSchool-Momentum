@@ -384,7 +384,7 @@ body {
   .weather {
     position: static;
     padding-bottom: 50px;
-    background: #5b5b5b;
+    background: #e4e4e4;
     width: 100vw;
     display: -webkit-box;
     display: -webkit-flex;
@@ -397,7 +397,8 @@ body {
         -ms-flex-pack: distribute;
             justify-content: space-around;
     padding: 0 10px;
-    height: auto; }
+    height: auto;
+    color: #000; }
     .weather div {
       width: 50%;
       font-size: 1.5em; }
@@ -439,4 +440,6 @@ body {
     .weather div:nth-child(3n + 4) {
       text-align: left;
       padding: 0 0 0 50px;
-      background-position: 0%; } }
+      background-position: 0%; }
+    .weather div:nth-child(2) {
+      font-size: 1.2em; } }

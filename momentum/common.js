@@ -307,7 +307,13 @@ async function getWeather() {
      } 
    }
  }
-
+let images = [];
+function preload() {
+    for (var i = 0; i < arguments.length; i++) {
+        images[i] = new Image();
+        images[i].src = preload.arguments[i];
+    }
+}
 
 
 showTime()
@@ -316,3 +322,30 @@ getName()
 getFocus()
 getCity()
 document.addEventListener('DOMContentLoaded', getWeather)
+
+preload(
+    "assets/images/day_1.jpg",
+    "assets/images/day_2.jpg",
+    "assets/images/day_3.jpg",
+    "assets/images/day_4.jpg",
+    "assets/images/day_5.jpg",
+    "assets/images/day_6.jpg",
+    "assets/images/evening_1.jpg",
+    "assets/images/evening_2.jpg",
+    "assets/images/evening_3.jpg",
+    "assets/images/evening_4.jpg",
+    "assets/images/evening_5.jpg",
+    "assets/images/evening_6.jpg",
+    "assets/images/morning_1.jpg",
+    "assets/images/morning_2.jpg",
+    "assets/images/morning_3.jpg",
+    "assets/images/morning_4.jpg",
+    "assets/images/morning_5.jpg",
+    "assets/images/morning_6.jpg",
+    "assets/images/night_1.jpg",
+    "assets/images/night_2.jpg",
+    "assets/images/night_3.jpg",
+    "assets/images/night_4.jpg",
+    "assets/images/night_5.jpg",
+	"assets/images/night_6.jpg",
+)

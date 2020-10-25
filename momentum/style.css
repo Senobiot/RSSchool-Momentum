@@ -83,10 +83,13 @@ body {
   color: #fff;
   -webkit-transition: background-image 1s linear;
   -o-transition: background-image 1s linear;
-  transition: background-image 1s linear; }
+  transition: background-image 1s linear;
+  font-size: 14px; }
 
 .time {
-  font-size: 16rem;
+  padding-top: 1em;
+  padding-bottom: 0.5em;
+  font-size: 8em;
   width: 3.5em;
   text-align: left;
   line-height: 1;
@@ -98,28 +101,108 @@ body {
   font-weight: 700; }
 
 .date {
-  line-height: 3;
-  font-size: 6rem; }
+  padding-bottom: 1em;
+  font-size: 3em; }
 
 .quote {
-  max-width: 70vw;
-  font-size: 5rem;
-  -moz-text-align-last: left;
-       text-align-last: left;
-  font-family: 'Dancing Script', cursive; }
+  position: relative;
+  width: 70vw;
+  font-size: 4em;
+  height: 3em;
+  text-align: center;
+  font-family: 'Dancing Script', cursive;
+  -webkit-transition: background-image 1s linear;
+  -o-transition: background-image 1s linear;
+  transition: background-image 1s linear; }
+  .quote .next_quote {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    cursor: pointer;
+    right: -webkit-calc(50% - 0.75em);
+    right: calc(50% - 0.75em);
+    bottom: -1.5em;
+    width: 1.5em;
+    height: 1em;
+    background: url("assets/images/quote_arrow.png") no-repeat 50% 50%/cover;
+    -webkit-transform-origin: bottom;
+        -ms-transform-origin: bottom;
+            transform-origin: bottom; }
+
+@-webkit-keyframes quoteArr {
+  0% {
+    -webkit-transform: rotateZ(0);
+            transform: rotateZ(0); }
+  50% {
+    -webkit-transform: rotateZ(30deg);
+            transform: rotateZ(30deg); }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0); } }
+
+@keyframes quoteArr {
+  0% {
+    -webkit-transform: rotateZ(0);
+            transform: rotateZ(0); }
+  50% {
+    -webkit-transform: rotateZ(30deg);
+            transform: rotateZ(30deg); }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0); } }
+    .quote .next_quote:hover {
+      -webkit-animation: quoteArr 0.75s linear infinite;
+              animation: quoteArr 0.75s linear infinite; }
+
+.quote_content {
+  margin: 0 auto;
+  line-height: 1.3;
+  -webkit-transition: opacity 0.5s linear;
+  -o-transition: opacity 0.5s linear;
+  transition: opacity 0.5s linear; }
+  .quote_content.active {
+    overflow: hidden;
+    white-space: nowrap;
+    -webkit-animation: typing 3s 0.5s steps(40, end) forwards;
+            animation: typing 3s 0.5s steps(40, end) forwards; }
+
+@-webkit-keyframes typing {
+  0% {
+    width: 0;
+    opacity: 1; }
+  100% {
+    width: 100%;
+    opacity: 1; } }
+
+@keyframes typing {
+  0% {
+    width: 0;
+    opacity: 1; }
+  100% {
+    width: 100%;
+    opacity: 1; } }
 
 .quote_author {
-  line-height: 2.5;
-  font-size: 5rem;
-  text-align: left;
+  -webkit-transition: opacity 0.5s linear;
+  -o-transition: opacity 0.5s linear;
+  transition: opacity 0.5s linear;
+  width: 100%;
+  margin-top: 2vw;
+  font-size: 0.8em;
   font-style: italic;
   color: #cacaca;
   font-style: normal;
   font-family: 'Sacramento', normal; }
 
-.greeting, .focus_title, .focus, .name {
-  line-height: 2;
-  font-size: 4rem; }
+.greeting {
+  line-height: 1.5;
+  font-size: 3em; }
+
+.focus_title {
+  font-size: 1.5em;
+  padding-bottom: 0.5em; }
+
+.greeting {
+  padding-bottom: 0.5em; }
 
 .name {
   display: inline-block;
@@ -130,10 +213,12 @@ body {
   text-shadow: 4px 3px 0 #000; }
 
 .focus {
+  max-width: 90vw;
+  font-size: 3em;
   min-width: 5px;
-  text-shadow: 4px 3px 0 #000;
-  font-size: 5rem;
-  color: #cacaca; }
+  text-shadow: 2px 3px 0 #000;
+  color: #cacaca;
+  margin-bottom: 2vw; }
 
 .sliderR, .sliderL {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -141,12 +226,12 @@ body {
   top: -webkit-calc(50% - 4vh);
   top: calc(50% - 4vh);
   left: 1vh;
-  width: 8vh;
-  height: 8vh;
+  width: 4vh;
+  height: 4vh;
   line-height: 1;
   cursor: pointer;
   text-align: center;
-  font-size: 6rem;
+  font-size: 4em;
   font-weight: 700;
   color: #fff;
   text-shadow: 4px 3px 0 #000; }
@@ -200,7 +285,7 @@ body {
 
 .sliderR {
   left: auto;
-  right: 2vh; }
+  right: 5vh; }
   .sliderR:hover {
     -webkit-animation: arrowR 0.75s linear infinite;
             animation: arrowR 0.75s linear infinite; }

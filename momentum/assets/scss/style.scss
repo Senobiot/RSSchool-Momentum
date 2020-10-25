@@ -12,10 +12,13 @@ body {
 	background: no-repeat 50% 50%/cover;
 	color: #fff;
 	transition: background-image 1s linear;
+	font-size: 14px;
 
 }
 .time {
-	font-size: 16rem;
+	padding-top: 1em;
+	padding-bottom: 0.5em;
+	font-size: 8em;
 	width: 3.5em;
 	text-align: left;
 	line-height: 1;
@@ -28,28 +31,76 @@ body {
 }
 
 .date {
-	line-height: 3;
-	font-size: 6rem;
+	padding-bottom: 1em;
+	font-size: 3em;
 }
 .quote {
-	max-width: 70vw;
-	font-size: 5rem;
-	text-align-last: left;
+	position: relative;
+	width: 70vw;
+	font-size: 4em;
+	height: 3em;
+	text-align: center;
 	font-family: 'Dancing Script', cursive;
 	//font-family: 'Sacramento', cursive;
+	transition: background-image 1s linear;
+	.next_quote {
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		position: absolute;
+		cursor: pointer;
+		right: calc(50% - 0.75em);
+		bottom: -1.5em;
+		width: 1.5em;
+		height: 1em;
+		background: url("assets/images/quote_arrow.png") no-repeat 50% 50%/cover;
+		transform-origin: bottom;
+		@keyframes quoteArr {
+		0% {transform: rotateZ(0);}
+		50% {transform: rotateZ(30deg);}
+		100% {transform: translateZ(0);}
+		}
+		&:hover {
+			animation: quoteArr 0.75s linear infinite;
+		}
+	}
+}
+.quote_content {
+	margin: 0 auto;
+	line-height: 1.3;
+	transition: opacity 0.5s linear;
+	&.active {
+		overflow: hidden;
+		white-space: nowrap;
+		animation: typing 3s 0.5s steps(40, end) forwards;
+	}
+	@keyframes typing {
+		0% {width: 0;
+			opacity: 1;}
+		100% {width: 100%;
+			opacity: 1;}
+	}
+
 }
 .quote_author {
-	line-height: 2.5;
-	font-size: 5rem;
-	text-align: left;
+	transition: opacity 0.5s linear;
+	width: 100%;
+	margin-top: 2vw;
+	font-size: 0.8em;
 	font-style: italic;
 	color: #cacaca;
 	font-style: normal;
 	font-family: 'Sacramento', normal;
 }
-.greeting, .focus_title, .focus, .name,  {
-	line-height: 2;
-	font-size: 4rem;
+.greeting  {
+	line-height: 1.5;
+	font-size: 3em;
+}
+.focus_title {
+	font-size: 1.5em;
+	padding-bottom: 0.5em;
+}
+
+.greeting {
+	padding-bottom: 0.5em;
 }
 .name {
 	display: inline-block;
@@ -60,22 +111,24 @@ body {
 	text-shadow: 4px 3px 0 #000;
 }
 .focus {
+	max-width: 90vw;
+	font-size: 3em;
 	min-width: 5px;
-	text-shadow: 4px 3px 0 #000;
-	font-size: 5rem;
+	text-shadow: 2px 3px 0 #000;
 	color: #cacaca;
+	margin-bottom: 2vw;
 }
 .sliderR, .sliderL {
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 	position: fixed;
 	top: calc(50% - 4vh);
 	left: 1vh;
-	width: 8vh;
-	height: 8vh;
+	width: 4vh;
+	height: 4vh;
 	line-height: 1;
 	cursor: pointer;
 	text-align: center;
-	font-size: 6rem;
+	font-size: 4em;
 	font-weight: 700;
 	color: #fff;
 	text-shadow: 4px 3px 0 #000;
@@ -95,7 +148,7 @@ body {
 }
 .sliderR {
 	left: auto;
-	right: 2vh;
+	right: 5vh;
 	&:hover {
 		animation: arrowR 0.75s linear infinite;}
 	

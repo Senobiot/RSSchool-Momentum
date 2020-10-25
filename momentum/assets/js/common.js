@@ -9,20 +9,24 @@ let time = document.querySelector(".time"),
 	arrRandomNum = [],
 	partsOfDayArr = ["night", "morning", "day", "evening"],
 	currentHour = (new Date()).getHours(),
-	currentQuoteNum = getRandomIntInclusive(0, quotes.length),
-	quote_content = document.querySelector(".quote_content"),
 	quote_author = document.querySelector(".quote_author"),
+	quote_block = document.querySelector(".quote"),
+	quotes = quotesArr.filter(e => e.text.length < 50).filter(e => e.author),
+	currentQuoteNum = getRandomIntInclusive(0, quotes.length),
 	leftArr = document.querySelector(".sliderL"),
 	rightArr = document.querySelector(".sliderR"),
 	counterPartsOfDay = Math.floor(currentHour/6),
 	counterSlides = currentHour - counterPartsOfDay*6,
 	animation = false,
+	quoteAnimation = false,
 	city = document.querySelector(".weather__city"),
 	wind = document.querySelector(".weather__wind"),
 	temperature = document.querySelector(".weather__temperature"),
 	visibility = document.querySelector(".weather__visibility"),
 	humidity = document.querySelector(".weather__humidity"),
-	description = document.querySelector(".weather__description");
+	description = document.querySelector(".weather__description"),
+	quoteContent = document.querySelector(".quote_content"),
+	quoteNext = document.querySelector(".next_quote");
 
 
 function getRandomIntInclusive(min, max) {
@@ -46,8 +50,9 @@ while (multiArrRandomNum.length < 4) {
 	arrRandomNum = [];
  }
 
+
 function changeQuote(num) {
-	quote_content.innerText = quotes[num].text;
+	quoteContent.innerText = quotes[num].text;
 	quote_author.innerText = quotes[num].author;
 }
 changeQuote(currentQuoteNum);
@@ -229,7 +234,6 @@ city.addEventListener('blur', function(){
 	leftArr.addEventListener('click', function(){
 		if (animation === false) {
 			currentQuoteNum = getRandomIntInclusive(0, quotes.length);
-			changeQuote(currentQuoteNum);
 			counterSlides--;
 			if (counterSlides < 0) {
 				counterSlides = multiArrRandomNum[0].length - 1;
@@ -239,14 +243,13 @@ city.addEventListener('blur', function(){
 			animation = true;
 			setTimeout(function(){
 			animation = false;
-			}, 1000)
+			}, 1250)
 		}
 	})
 
 	rightArr.addEventListener('click', function(){
 		if (animation === false) {
 			currentQuoteNum = getRandomIntInclusive(0, quotes.length);
-			changeQuote(currentQuoteNum);
 			counterSlides++;
 			if (counterSlides > multiArrRandomNum[0].length - 1) {
 				counterSlides = 0;
@@ -256,11 +259,27 @@ city.addEventListener('blur', function(){
 			animation = true;
 			setTimeout(function(){
 			animation = false;
-			}, 1000)
+			}, 1250)
 		}
 	})
 
-
+quoteNext.addEventListener('click', function() {
+	if (quoteAnimation === false) {
+		quoteContent.classList.add("active");
+		quoteAnimation = true;
+		quoteContent.style.opacity = "0"
+		quote_author.style.opacity = "0"
+		setTimeout(function(){
+		quoteContent.style.opacity = "1"
+		quote_author.style.opacity = "1"
+		changeQuote(currentQuoteNum);
+			}, 510)
+		setTimeout(function(){
+			quoteContent.classList.remove("active");
+			quoteAnimation = false;
+			}, 3000)
+		}
+})
 
 async function getWeather() {
 	const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${localStorage.getItem('city')}&lang=en&appid=092dfaf1c1302faae7237e56153d851b&units=metric`);

@@ -238,7 +238,8 @@ city.addEventListener('blur', function(){
 				counterSlides = multiArrRandomNum[0].length - 1;
 				counterPartsOfDay--}
 			if (counterPartsOfDay < 0) {counterPartsOfDay = 3}
-			document.body.style.backgroundImage = `url('assets/images/${partsOfDayArr[counterPartsOfDay]}_${multiArrRandomNum[counterPartsOfDay][counterSlides]}.jpg')`;
+			let picture = `url('assets/images/${partsOfDayArr[counterPartsOfDay]}_${multiArrRandomNum[counterPartsOfDay][counterSlides]}.jpg')`;
+			document.body.style.backgroundImage = picture;
 			animation = true;
 			setTimeout(function(){
 			animation = false;
@@ -254,7 +255,8 @@ city.addEventListener('blur', function(){
 				counterSlides = 0;
 				counterPartsOfDay++;}
 			if (counterPartsOfDay > 3) {counterPartsOfDay = 0}
-			document.body.style.backgroundImage = `url('assets/images/${partsOfDayArr[counterPartsOfDay]}_${multiArrRandomNum[counterPartsOfDay][counterSlides]}.jpg')`;
+			let picture = `url('assets/images/${partsOfDayArr[counterPartsOfDay]}_${multiArrRandomNum[counterPartsOfDay][counterSlides]}.jpg')`;
+			document.body.style.backgroundImage = picture;
 			animation = true;
 			setTimeout(function(){
 			animation = false;

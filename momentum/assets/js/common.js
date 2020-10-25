@@ -12,7 +12,7 @@ let time = document.querySelector(".time"),
 	quote_author = document.querySelector(".quote_author"),
 	quote_block = document.querySelector(".quote"),
 	quotes = quotesArr.filter(e => e.text.length < 50).filter(e => e.author),
-	currentQuoteNum = getRandomIntInclusive(0, quotes.length),
+	//currentQuoteNum = getRandomIntInclusive(0, quotes.length),
 	leftArr = document.querySelector(".sliderL"),
 	rightArr = document.querySelector(".sliderR"),
 	counterPartsOfDay = Math.floor(currentHour/6),
@@ -55,7 +55,7 @@ function changeQuote(num) {
 	quoteContent.innerText = quotes[num].text;
 	quote_author.innerText = quotes[num].author;
 }
-changeQuote(currentQuoteNum);
+changeQuote(getRandomIntInclusive(0, quotes.length));
 
 function showTime() {
 	let today = new Date(),
@@ -73,8 +73,7 @@ function showTime() {
 	if (hour !== currentHour) {
 		bgChange();
 		currentHour = hour;
-		currentQuoteNum = getRandomIntInclusive(0, quotes.length);
-		changeQuote(currentQuoteNum);
+		changeQuote(getRandomIntInclusive(0, quotes.length));
 	}
 	setTimeout(showTime, 1000)
 }
@@ -272,7 +271,7 @@ quoteNext.addEventListener('click', function() {
 		setTimeout(function(){
 		quoteContent.style.opacity = "1"
 		quote_author.style.opacity = "1"
-		changeQuote(currentQuoteNum);
+		changeQuote(getRandomIntInclusive(0, quotes.length));
 			}, 510)
 		setTimeout(function(){
 			quoteContent.classList.remove("active");

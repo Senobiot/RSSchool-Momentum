@@ -2,9 +2,41 @@ let time = document.querySelector(".time"),
 	date = document.querySelector(".date"),
 	weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
 	months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-	greeting = document.querySelector(".greeting"),
+	partsOfDay = document.querySelector(".partsOfDay"),
 	name = document.querySelector(".name"),
-	focus = document.querySelector(".focus");
+	focus = document.querySelector(".focus"),
+	multiArrRandomNum = [],
+	arrRandomNum = [],
+	partsOfDayArr = ["night", "morning", "day", "evening"],
+	currentHour = (new Date()).getHours();
+	leftArr = document.querySelector(".sliderL"),
+	rightArr = document.querySelector(".sliderR"),
+	counterSlides = currentHour,
+	counterPartsOfDay = Math.floor(currentHour/6),
+	animation = false;
+
+function getRandomIntInclusive(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min; 
+}
+
+function getRand (qty) {
+	if (arrRandomNum.length < qty) {
+		let number = getRandomIntInclusive(1, 6);
+		if (arrRandomNum.includes(number)) {
+			getRand(qty)
+		} else {
+			arrRandomNum.push(number);
+			getRand(qty)}
+	} else { return }
+}
+
+while (multiArrRandomNum.length < 4) {
+	getRand(6);
+	multiArrRandomNum.push(arrRandomNum);
+	arrRandomNum = [];
+ }
+
+
 
 function showTime() {
 	let today = new Date(),
@@ -19,7 +51,11 @@ function showTime() {
 	if (min < 10) {min = "0" + min}
 	time.innerHTML = `${hour}<span>:</span>${min}<span>:</span>${second}`;
 	date.innerHTML = `${dayOfWeek}, ${dayOfMonth} ${month}`;
-	setTimeout(	showTime, 1000)
+	if (hour !== currentHour) {
+		bgChange();
+		currentHour = hour;
+	}
+	setTimeout(showTime, 1000)
 }
 
 //background change
@@ -27,16 +63,20 @@ function bgChange () {
 	let today = new Date(),
 	hour = today.getHours();
 	if (hour < 6 ) {
-		document.body.style.backgroundImage = "url('assets/images/night_1.jpg')"
+		document.body.style.backgroundImage = `url('assets/images/${partsOfDayArr[0]}_${multiArrRandomNum[0][hour]}.jpg')`;
+		partsOfDay.innerText = `${partsOfDayArr[0]} `;
 	}
 	else if (hour < 12) {
-		document.body.style.backgroundImage = "url('assets/images/evening_1.jpg')"
+		document.body.style.backgroundImage = `url('assets/images/${partsOfDayArr[1]}_${multiArrRandomNum[1][hour - 6]}.jpg')`;
+		partsOfDay.innerText = `${partsOfDayArr[1]} `;
 	}
-	else if (hour < 17) {
-		document.body.style.backgroundImage = "url('assets/images/day_1.jpg')"
+	else if (hour < 18) {
+		document.body.style.backgroundImage = `url('assets/images/${partsOfDayArr[2]}_${multiArrRandomNum[2][hour - 12]}.jpg')`;
+		partsOfDay.innerText = `${partsOfDayArr[2]} `;
 	}
 	else {
-		document.body.style.backgroundImage = "url('assets/images/evening_1.jpg')"
+		document.body.style.backgroundImage = `url('assets/images/${partsOfDayArr[3]}_${multiArrRandomNum[3][hour - 18]}.jpg')`
+		partsOfDay.innerText = `${partsOfDayArr[3]} `;
 	}
 }
 
@@ -124,6 +164,38 @@ focus.addEventListener('blur', function(){
 		focus.textContent = "[Enter Focus]"
 	}	else {focus.textContent = localStorage.getItem('focus')}
 })
+
+
+
+	leftArr.addEventListener('click', function(){
+		if (animation === false) {
+			counterSlides--;
+			if (counterSlides < 0) {
+				counterSlides = multiArrRandomNum[0].length - 1;
+				counterPartsOfDay--}
+			if (counterPartsOfDay < 0) {counterPartsOfDay = 3}
+			document.body.style.backgroundImage = `url('assets/images/${partsOfDayArr[counterPartsOfDay]}_${multiArrRandomNum[counterPartsOfDay][counterSlides]}.jpg')`;
+			animation = true;
+			setTimeout(function(){
+			animation = false;
+			}, 1500)
+		}
+	})
+
+	rightArr.addEventListener('click', function(){
+		if (animation === false) {
+			counterSlides++;
+			if (counterSlides > multiArrRandomNum[0].length - 1) {
+				counterSlides = 0;
+				counterPartsOfDay++;}
+			if (counterPartsOfDay > 3) {counterPartsOfDay = 0}
+			document.body.style.backgroundImage = `url('assets/images/${partsOfDayArr[counterPartsOfDay]}_${multiArrRandomNum[counterPartsOfDay][counterSlides]}.jpg')`;
+			animation = true;
+			setTimeout(function(){
+			animation = false;
+			}, 1500)
+		}
+	})
 
 
 
